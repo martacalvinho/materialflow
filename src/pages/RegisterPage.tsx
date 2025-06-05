@@ -30,7 +30,8 @@ const RegisterPage: React.FC = () => {
 
     try {
       await signUp(formData.email, formData.password, {
-        studio_name: formData.name // Changed from 'name' to 'studio_name' to match expected metadata
+        studio_name: formData.name,
+        role: 'user' // Add the required role field
       });
       
       // Redirect to login with success message
