@@ -28,7 +28,7 @@ const DemoDashboardPage: React.FC = () => {
         <Route path="manufacturers/:id" element={<ManufacturerDetails />} />
         <Route path="alerts" element={<AlertsPage />} />
         <Route path="settings" element={<SettingsPage />} />
-        <Route path="*" element={<Navigate to="/demo" replace />} />
+        <Route path="*" element={<Navigate to="/demo\" replace />} />
       </Route>
     </Routes>
   );
