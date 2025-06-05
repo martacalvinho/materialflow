@@ -7,16 +7,16 @@ const FaqSection: React.FC = () => {
   
   const faqs = [
     {
-      question: 'Do I need to tag materials myself?',
-      answer: 'No. Our system extracts materials directly from your uploaded specs. We use advanced algorithms to identify and categorize materials automatically, saving you hours of manual work.'
+      question: 'How long does it take to process my specs?',
+      answer: 'Currently, it takes 2-3 business days for our team to process and analyze your project specifications. We\'re working on automating this process with AI to significantly reduce processing time in the future.'
     },
     {
       question: 'Can I track materials across multiple clients?',
-      answer: 'Yes. You\'ll have filters by project, client, typology and more. This makes it easy to see patterns in material usage across different types of projects or specific clients.'
+      answer: 'Yes. Once your specs are processed, you\'ll have filters by project, client, typology and more. This makes it easy to see patterns in material usage across different types of projects or specific clients.'
     },
     {
-      question: 'How accurate is the material extraction?',
-      answer: 'Our system achieves approximately 95% accuracy in identifying materials from well-structured PDFs. Any missed materials can be easily added manually, and our system continuously improves with usage.'
+      question: 'How do you handle material extraction?',
+      answer: 'Our team carefully reviews each PDF to identify and categorize materials. While this process is currently manual to ensure accuracy, we\'re developing AI-assisted tools to automate and enhance this process while maintaining high accuracy standards.'
     },
     {
       question: 'Is my data secure and private?',
@@ -28,7 +28,7 @@ const FaqSection: React.FC = () => {
     },
     {
       question: 'How do I get started?',
-      answer: 'Simply sign up for an account, select your plan, and upload your first project PDF. Our system will guide you through the process, and you\'ll have your first insights within minutes.'
+      answer: 'Simply sign up for an account, select your plan, and upload your first project PDF. Our team will begin processing your specs within one business day, and you\'ll receive a notification when your data is ready to explore in the dashboard.'
     }
   ];
 
