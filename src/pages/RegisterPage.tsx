@@ -30,13 +30,16 @@ const RegisterPage: React.FC = () => {
     setIsLoading(true);
 
     try {
+      // Send only the metadata that matches our database schema
       await signUp(formData.email, formData.password, {
         full_name: formData.fullName,
         studio_name: formData.studioName,
-        role: 'studio_owner'
+        // Set default role as 'user' to match the enum type
+        role: 'user'
       });
       navigate('/login?registered=true');
     } catch (err: any) {
+      console.error('Registration error:', err);
       setError(err.message || 'Failed to create account');
     } finally {
       setIsLoading(false);
@@ -202,4 +205,4 @@ const RegisterPage: React.FC = () => {
   );
 };
 
-export default RegisterPage
+export default RegisterPage;
