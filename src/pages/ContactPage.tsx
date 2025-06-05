@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, MessageSquare, Clock, Globe } from 'lucide-react';
+import { Mail, MessageSquare } from 'lucide-react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import Button from '../components/ui/Button';
+import { Link } from 'react-router-dom';
 
 const ContactPage: React.FC = () => {
   return (
@@ -33,59 +34,29 @@ const ContactPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Contact Methods Grid */}
+        {/* Contact Method */}
         <section className="py-16 px-4 md:px-6">
           <div className="container mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: Mail,
-                  title: "Email Us",
-                  description: "Get a response within 24 hours",
-                  info: "hello@treqy.com",
-                  action: "Send email",
-                  href: "mailto:hello@treqy.com"
-                },
-                {
-                  icon: Phone,
-                  title: "Call Us",
-                  description: "Mon-Fri from 9am to 6pm",
-                  info: "+1 (555) 123-4567",
-                  action: "Call now",
-                  href: "tel:+15551234567"
-                },
-                {
-                  icon: Globe,
-                  title: "Global Support",
-                  description: "Available in multiple time zones",
-                  info: "24/7 Support for Enterprise",
-                  action: "View locations",
-                  href: "#locations"
-                }
-              ].map((method, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white p-6 rounded-xl border border-surface-200 shadow-sm"
-                >
-                  <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center mb-4">
-                    <method.icon className="w-6 h-6 text-primary-600" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-surface-900 mb-2">{method.title}</h3>
-                  <p className="text-surface-600 mb-4">{method.description}</p>
-                  <p className="font-medium text-surface-900 mb-4">{method.info}</p>
-                  <a 
-                    href={method.href}
-                    className="text-primary-600 hover:text-primary-700 font-medium flex items-center gap-2"
-                  >
-                    {method.action}
-                  </a>
-                </motion.div>
-              ))}
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-xl border border-surface-200 shadow-sm max-w-md mx-auto"
+            >
+              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center mb-4">
+                <Mail className="w-6 h-6 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-surface-900 mb-2">Email Us</h3>
+              <p className="text-surface-600 mb-4">Get a response within 24 hours</p>
+              <p className="font-medium text-surface-900 mb-4">hello@treqy.com</p>
+              <a 
+                href="mailto:hello@treqy.com"
+                className="text-primary-600 hover:text-primary-700 font-medium flex items-center gap-2"
+              >
+                Send email
+              </a>
+            </motion.div>
           </div>
         </section>
 
@@ -182,13 +153,11 @@ const ContactPage: React.FC = () => {
               <p className="text-lg text-surface-600">
                 Check out our comprehensive FAQ section for immediate answers to common questions.
               </p>
-              <Button 
-                variant="outline"
-                onClick={() => window.location.href = '/#faq'}
-                className="mx-auto"
-              >
-                View FAQ
-              </Button>
+              <Link to="/#faq">
+                <Button variant="outline" className="mx-auto">
+                  View FAQ
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </section>
