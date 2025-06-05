@@ -152,7 +152,7 @@ const Header: React.FC = () => {
           <div className="mt-8">
             <Link to="/dashboard" onClick={toggleMenu}>
               <Button className="w-full justify-center">
-                Try Interactive Demo
+                Demo
               </Button>
             </Link>
           </div>
