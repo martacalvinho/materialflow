@@ -19,8 +19,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requireAdmin 
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  if (requireAdmin && user.email !== 'martabarreiracalvinho@gmail.com') {
-    return <Navigate to="/dashboard\" replace />;
+  if (requireAdmin && user.user_metadata?.role !== 'admin') {
+    return <Navigate to="/dashboard" replace />;
   }
 
   return <>{children}</>;

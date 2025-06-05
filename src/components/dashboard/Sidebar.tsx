@@ -32,7 +32,7 @@ const Sidebar: React.FC = () => {
   const pathname = location.pathname;
   const { user, signOut } = useAuth();
 
-  const isAdmin = user?.email === 'martabarreiracalvinho@gmail.com';
+  const isAdmin = user?.user_metadata?.role === 'admin';
 
   const navItems = [
     { icon: LayoutDashboard, label: 'Dashboard', to: '/dashboard' },
