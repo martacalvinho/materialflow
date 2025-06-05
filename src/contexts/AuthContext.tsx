@@ -28,8 +28,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signOut = async () => {
-    await supabaseSignOut();
-    navigate('/login');
+    try {
+      await supabaseSignOut();
+    } catch (error) {
+      console.error('Error during sign out:', error);
+      // Even if signOut fails, we still want to clear local state
+    } finally {
+      // Always navigate to login page, regardless of signOut success/failure
+      navigate('/login');
+    }
   };
 
   return (
