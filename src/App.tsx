@@ -5,13 +5,13 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import LandingPage from './pages/LandingPage';
 import DashboardPage from './pages/DashboardPage';
 import DemoDashboardPage from './pages/DemoDashboardPage';
+import AdminPage from './pages/AdminPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import AdminPage from './pages/AdminPage';
 import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { LayoutDashboard, BookOpen, Bell, Users, Settings, LogOut, Factory, Package } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
 import Logo from '../ui/Logo';
 
 interface NavItemProps {
@@ -29,6 +30,9 @@ const NavItem: React.FC<NavItemProps> = ({ icon: Icon, label, to, isActive }) =>
 const Sidebar: React.FC = () => {
   const location = useLocation();
   const pathname = location.pathname;
+  const { user, signOut } = useAuth();
+
+  const isAdmin = user?.email === 'martabarreiracalvinho@gmail.com';
 
   const navItems = [
     { icon: LayoutDashboard, label: 'Dashboard', to: '/dashboard' },
@@ -39,6 +43,10 @@ const Sidebar: React.FC = () => {
     { icon: Bell, label: 'Alerts', to: '/dashboard/alerts' },
     { icon: Settings, label: 'Settings', to: '/dashboard/settings' },
   ];
+
+  if (isAdmin) {
+    navItems.push({ icon: Users, label: 'Admin', to: '/admin' });
+  }
 
   return (
     <div className="w-64 h-screen border-r border-surface-200 bg-white fixed top-0 left-0 flex flex-col">
@@ -68,7 +76,10 @@ const Sidebar: React.FC = () => {
       </div>
 
       <div className="mt-auto p-4 border-t border-surface-200">
-        <button className="flex items-center gap-3 px-4 py-3 w-full rounded-lg text-surface-600 hover:bg-surface-100 transition-colors">
+        <button 
+          onClick={signOut}
+          className="flex items-center gap-3 px-4 py-3 w-full rounded-lg text-surface-600 hover:bg-surface-100 transition-colors"
+        >
           <LogOut size={20} />
           <span>Logout</span>
         </button>
