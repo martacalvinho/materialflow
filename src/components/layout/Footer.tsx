@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-surface-900 text-white py-12 md:py-16 px-4 md:px-6">
       <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="flex items-center gap-2">
               <Logo />
@@ -20,30 +20,21 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">Product</h3>
             <ul className="space-y-3">
-              <li><Link to="/#features" className="text-surface-300 hover:text-white transition-colors">Features</Link></li>
-              <li><Link to="/#how-it-works" className="text-surface-300 hover:text-white transition-colors">How It Works</Link></li>
-              <li><Link to="/#pricing" className="text-surface-300 hover:text-white transition-colors">Pricing</Link></li>
+              <li><button onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })} className="text-surface-300 hover:text-white transition-colors">Features</button></li>
+              <li><button onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })} className="text-surface-300 hover:text-white transition-colors">How It Works</button></li>
+              <li><button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="text-surface-300 hover:text-white transition-colors">Pricing</button></li>
               <li><Link to="/dashboard" className="text-surface-300 hover:text-white transition-colors">Dashboard</Link></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Resources</h3>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-surface-300 hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#" className="text-surface-300 hover:text-white transition-colors">Documentation</a></li>
-              <li><a href="#" className="text-surface-300 hover:text-white transition-colors">Material Library</a></li>
-              <li><a href="#" className="text-surface-300 hover:text-white transition-colors">Tutorials</a></li>
+              <li><Link to="/login" className="text-surface-300 hover:text-white transition-colors">Log In</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-semibold text-lg mb-4">Company</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-surface-300 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="text-surface-300 hover:text-white transition-colors">Contact</a></li>
-              <li><a href="#" className="text-surface-300 hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-surface-300 hover:text-white transition-colors">Terms of Service</a></li>
+              <li><Link to="/about" className="text-surface-300 hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/contact" className="text-surface-300 hover:text-white transition-colors">Contact</Link></li>
+              <li><Link to="/privacy" className="text-surface-300 hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="text-surface-300 hover:text-white transition-colors">Terms of Service</Link></li>
             </ul>
           </div>
         </div>
