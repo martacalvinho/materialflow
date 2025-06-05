@@ -25,6 +25,21 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const offset = 80; // Account for header height
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -39,18 +54,30 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <Link to="/#features" className="text-surface-600 hover:text-primary-600 transition-colors">
+          <button 
+            onClick={() => scrollToSection('features')} 
+            className="text-surface-600 hover:text-primary-600 transition-colors"
+          >
             Features
-          </Link>
-          <Link to="/#how-it-works" className="text-surface-600 hover:text-primary-600 transition-colors">
+          </button>
+          <button 
+            onClick={() => scrollToSection('how-it-works')} 
+            className="text-surface-600 hover:text-primary-600 transition-colors"
+          >
             How It Works
-          </Link>
-          <Link to="/#pricing" className="text-surface-600 hover:text-primary-600 transition-colors">
+          </button>
+          <button 
+            onClick={() => scrollToSection('pricing')} 
+            className="text-surface-600 hover:text-primary-600 transition-colors"
+          >
             Pricing
-          </Link>
-          <Link to="/#faq" className="text-surface-600 hover:text-primary-600 transition-colors">
+          </button>
+          <button 
+            onClick={() => scrollToSection('faq')} 
+            className="text-surface-600 hover:text-primary-600 transition-colors"
+          >
             FAQ
-          </Link>
+          </button>
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
@@ -77,34 +104,30 @@ const Header: React.FC = () => {
       >
         <div className="flex flex-col h-full pt-20 px-6">
           <nav className="flex flex-col gap-6 text-lg">
-            <Link 
-              to="/#features" 
-              className="text-surface-600 py-2 border-b border-surface-100" 
-              onClick={toggleMenu}
+            <button 
+              onClick={() => scrollToSection('features')} 
+              className="text-surface-600 py-2 border-b border-surface-100"
             >
               Features
-            </Link>
-            <Link 
-              to="/#how-it-works" 
-              className="text-surface-600 py-2 border-b border-surface-100" 
-              onClick={toggleMenu}
+            </button>
+            <button 
+              onClick={() => scrollToSection('how-it-works')} 
+              className="text-surface-600 py-2 border-b border-surface-100"
             >
               How It Works
-            </Link>
-            <Link 
-              to="/#pricing" 
-              className="text-surface-600 py-2 border-b border-surface-100" 
-              onClick={toggleMenu}
+            </button>
+            <button 
+              onClick={() => scrollToSection('pricing')} 
+              className="text-surface-600 py-2 border-b border-surface-100"
             >
               Pricing
-            </Link>
-            <Link 
-              to="/#faq" 
-              className="text-surface-600 py-2 border-b border-surface-100" 
-              onClick={toggleMenu}
+            </button>
+            <button 
+              onClick={() => scrollToSection('faq')} 
+              className="text-surface-600 py-2 border-b border-surface-100"
             >
               FAQ
-            </Link>
+            </button>
           </nav>
           <div className="mt-8">
             <Link to="/dashboard" onClick={toggleMenu}>

@@ -4,6 +4,7 @@ import HeroSection from '../components/home/HeroSection';
 import FeaturesSection from '../components/home/FeaturesSection';
 import HowItWorks from '../components/home/HowItWorks';
 import PricingSection from '../components/home/PricingSection';
+import ContactSection from '../components/home/ContactSection';
 import FaqSection from '../components/home/FaqSection';
 import Footer from '../components/layout/Footer';
 
@@ -16,6 +17,7 @@ const LandingPage: React.FC = () => {
         <FeaturesSection />
         <HowItWorks />
         <PricingSection />
+        <ContactSection />
         <FaqSection />
       </main>
       <Footer />
