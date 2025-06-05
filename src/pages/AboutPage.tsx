@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Globe, Sparkles, Target, ArrowRight, Users, Lightbulb, Rocket } from 'lucide-react';
+import { Building2, Globe, Sparkles, Target, ArrowRight, Users, Lightbulb, Rocket, TrendingUp, Compass } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import Button from '../components/ui/Button';
@@ -11,8 +12,9 @@ const AboutPage: React.FC = () => {
       <Header />
       <main className="pt-24">
         {/* Hero Section */}
-        <section className="py-20 px-4 md:px-6 bg-gradient-to-b from-primary-50 to-white">
-          <div className="container mx-auto max-w-4xl text-center">
+        <section className="py-20 px-4 md:px-6 bg-gradient-to-b from-primary-50 to-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(109,40,217,0.05),transparent)] pointer-events-none" />
+          <div className="container mx-auto max-w-4xl text-center relative">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -20,14 +22,14 @@ const AboutPage: React.FC = () => {
               className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-primary-100 text-primary-600 mb-8"
             >
               <Users size={16} />
-              <span className="text-sm font-medium">Built by architects, for architects</span>
+              <span className="text-sm font-medium">By Architects, For Architects</span>
             </motion.div>
             
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold text-surface-900 mb-6"
+              className="text-4xl md:text-5xl font-bold text-surface-900 mb-6 leading-tight"
             >
               Transforming Material Knowledge into Design Intelligence
             </motion.h1>
@@ -36,24 +38,10 @@ const AboutPage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg text-surface-600 max-w-3xl mx-auto mb-8"
+              className="text-lg md:text-xl text-surface-600 max-w-3xl mx-auto mb-8"
             >
-              We're revolutionizing how architecture studios manage, analyze, and leverage their material specifications. Turn your past project data into actionable insights for smarter design decisions.
+              With a decade of architectural practice spanning global hubs like London, New York, Chicago, and Tokyo, we intimately understand the challenges you face. We've lived the reality of navigating complex projects and the often-overlooked goldmine hidden within material specifications.
             </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <Button 
-                size="lg"
-                className="group"
-              >
-                <span>Start Your Journey</span>
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
-              </Button>
-            </motion.div>
           </div>
         </section>
 
@@ -65,22 +53,30 @@ const AboutPage: React.FC = () => {
                 {
                   icon: Building2,
                   title: "10+ Years",
-                  description: "Of architectural expertise across diverse project types"
+                  description: "Of architectural practice experience",
+                  color: "bg-primary-50",
+                  iconColor: "text-primary-600"
                 },
                 {
                   icon: Globe,
-                  title: "Global Reach",
-                  description: "Experience in London, New York, Chicago, Tokyo"
+                  title: "4 Global Cities",
+                  description: "London, New York, Chicago, Tokyo",
+                  color: "bg-secondary-50",
+                  iconColor: "text-secondary-600"
                 },
                 {
                   icon: Target,
-                  title: "Clear Focus",
-                  description: "Dedicated to enhancing material intelligence"
+                  title: "Vast Data Pools",
+                  description: "Observed across years of architectural specs",
+                  color: "bg-terracotta-50",
+                  iconColor: "text-terracotta-600"
                 },
                 {
                   icon: Sparkles,
-                  title: "Innovation",
-                  description: "Continuously evolving with your needs"
+                  title: "Actionable Clarity",
+                  description: "Transforming complex data into smart design choices",
+                  color: "bg-accent-50",
+                  iconColor: "text-accent-600"
                 }
               ].map((stat, index) => (
                 <motion.div
@@ -92,8 +88,8 @@ const AboutPage: React.FC = () => {
                   className="text-center"
                 >
                   <div className="bg-white p-6 rounded-xl border border-surface-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="mx-auto w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center mb-4">
-                      <stat.icon className="w-6 h-6 text-primary-600" />
+                    <div className={`mx-auto w-12 h-12 ${stat.color} rounded-lg flex items-center justify-center mb-4`}>
+                      <stat.icon className={`w-6 h-6 ${stat.iconColor}`} />
                     </div>
                     <h3 className="text-xl font-semibold text-surface-900 mb-2">{stat.title}</h3>
                     <p className="text-surface-600">{stat.description}</p>
@@ -107,76 +103,130 @@ const AboutPage: React.FC = () => {
         {/* Story Sections */}
         <section className="py-20 px-4 md:px-6">
           <div className="container mx-auto max-w-4xl space-y-24">
+            {/* The "Aha!" Moment */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center"
+              className="relative"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center mb-6">
-                <Lightbulb className="w-6 h-6 text-primary-600" />
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center mb-6">
+                  <Lightbulb className="w-6 h-6 text-primary-600" />
+                </div>
+                <h2 className="text-3xl font-bold text-surface-900 mb-6">The "Aha!" Moment</h2>
+                <div className="bg-primary-50 text-primary-700 text-lg md:text-xl font-medium p-6 rounded-lg mb-8 max-w-2xl">
+                  "We knew there had to be a way to transform that chaos into clarity, that history into a powerful, proactive design tool."
+                </div>
+                <p className="text-lg text-surface-600 leading-relaxed">
+                  Ever felt that critical material knowledge from past projects was just...gone? Lost in old PDFs or forgotten spreadsheets? We've been there. That frustration – seeing valuable data lie dormant while inefficiencies crept in – was the spark for Treqy.
+                </p>
               </div>
-              <h2 className="text-3xl font-bold text-surface-900 mb-6">The "Aha!" Moment</h2>
-              <p className="text-lg text-surface-600 leading-relaxed">
-                Every architecture studio sits on a goldmine of material knowledge – locked away in past project specs. We watched talented architects spend countless hours searching through old PDFs, recreating material schedules, and missing opportunities to leverage their studio's collective experience. That's when we knew: there had to be a better way to transform this dormant information into a powerful, proactive tool for smarter design.
-              </p>
             </motion.div>
 
+            {/* Our Mission */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center"
+              className="relative"
             >
-              <div className="w-12 h-12 bg-terracotta-50 rounded-lg flex items-center justify-center mb-6">
-                <Target className="w-6 h-6 text-terracotta-600" />
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-terracotta-50 rounded-lg flex items-center justify-center mb-6">
+                  <Compass className="w-6 h-6 text-terracotta-600" />
+                </div>
+                <h2 className="text-3xl font-bold text-surface-900 mb-6">Our Mission</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  {[
+                    {
+                      icon: Target,
+                      title: "Intuitive Analysis",
+                      description: "Automatically analyze specs and reveal actionable insights"
+                    },
+                    {
+                      icon: Sparkles,
+                      title: "Smart Decisions",
+                      description: "Make data-driven choices with speed and confidence"
+                    },
+                    {
+                      icon: TrendingUp,
+                      title: "Better Outcomes",
+                      description: "Boost creativity and slash inefficiencies"
+                    }
+                  ].map((card, index) => (
+                    <div key={index} className="bg-surface-50 p-6 rounded-lg">
+                      <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center mb-4 mx-auto">
+                        <card.icon className="w-5 h-5 text-primary-600" />
+                      </div>
+                      <h3 className="font-medium mb-2">{card.title}</h3>
+                      <p className="text-sm text-surface-600">{card.description}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-lg text-surface-600 leading-relaxed">
+                  Our mission is clear: to <span className="font-medium">give you back control</span> and <span className="font-medium">harness the intelligence</span> locked within your material libraries and project histories. Imagine your entire 'material universe,' perfectly organized, working for you.
+                </p>
               </div>
-              <h2 className="text-3xl font-bold text-surface-900 mb-6">Our Mission</h2>
-              <p className="text-lg text-surface-600 leading-relaxed">
-                We're transforming how architects interact with their material knowledge. Imagine instantly knowing every project where you've used a specific material, understanding usage patterns across different building types, and getting alerts about discontinued products before they affect your projects. That's the power of Treqy – turning your past decisions into future insights.
-              </p>
             </motion.div>
 
+            {/* Looking Forward */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center"
+              className="relative"
             >
-              <div className="w-12 h-12 bg-secondary-50 rounded-lg flex items-center justify-center mb-6">
-                <Rocket className="w-6 h-6 text-secondary-600" />
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-secondary-50 rounded-lg flex items-center justify-center mb-6">
+                  <Rocket className="w-6 h-6 text-secondary-600" />
+                </div>
+                <h2 className="text-3xl font-bold text-surface-900 mb-6">Looking Forward</h2>
+                <div className="bg-secondary-50 text-secondary-700 text-lg md:text-xl font-medium p-6 rounded-lg mb-8 max-w-2xl">
+                  "We're obsessed with understanding the dynamic needs of modern practice."
+                </div>
+                <p className="text-lg text-surface-600 leading-relaxed">
+                  Grounded in real-world architectural experience, Treqy isn't just a tool; it's an evolving partner. We're passionately committed to helping you transform your accumulated material knowledge from a simple record into a powerful strategic asset for every future project.
+                </p>
               </div>
-              <h2 className="text-3xl font-bold text-surface-900 mb-6">Looking Forward</h2>
-              <p className="text-lg text-surface-600 leading-relaxed">
-                We're just getting started. Our vision goes beyond just organizing materials – we're building a platform that learns from your studio's unique material preferences, helps you make more sustainable choices, and transforms your specification process from a time-consuming task into a strategic advantage. Join us in shaping the future of material intelligence in architecture.
-              </p>
             </motion.div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 md:px-6 bg-primary-900 text-white">
-          <div className="container mx-auto max-w-4xl text-center">
+        <section className="py-20 px-4 md:px-6 bg-primary-900 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,255,255,0.1),transparent)] pointer-events-none" />
+          <div className="container mx-auto max-w-4xl text-center relative">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-8"
             >
               <h2 className="text-3xl md:text-4xl font-bold">Ready to Transform Your Material Knowledge?</h2>
               <p className="text-lg text-primary-100 max-w-2xl mx-auto">
                 Join forward-thinking architecture studios already using Treqy to make smarter material decisions.
               </p>
-              <Button 
-                size="lg"
-                className="bg-white text-primary-900 hover:bg-primary-50"
-              >
-                Get Started Free
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/dashboard">
+                  <Button 
+                    size="lg"
+                    className="bg-white text-primary-900 hover:bg-primary-50 w-full sm:w-auto"
+                  >
+                    Try Interactive Demo
+                  </Button>
+                </Link>
+                <Button 
+                  variant="outline"
+                  size="lg"
+                  className="border-white text-white hover:bg-white/10 w-full sm:w-auto"
+                >
+                  Contact Sales
+                </Button>
+              </div>
             </motion.div>
           </div>
         </section>
