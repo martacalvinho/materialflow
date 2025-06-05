@@ -30,13 +30,13 @@ const RegisterPage: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // Send only the metadata that matches our database schema
       await signUp(formData.email, formData.password, {
         full_name: formData.fullName,
         studio_name: formData.studioName,
-        // Set default role as 'user' to match the enum type
         role: 'user'
       });
+      
+      // Redirect to login with success message
       navigate('/login?registered=true');
     } catch (err: any) {
       console.error('Registration error:', err);
