@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Button from '../ui/Button';
 import Logo from '../ui/Logo';
@@ -7,6 +7,7 @@ import Logo from '../ui/Logo';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -26,6 +27,11 @@ const Header: React.FC = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+
     const section = document.getElementById(sectionId);
     if (section) {
       const offset = 80; // Account for header height
@@ -72,12 +78,18 @@ const Header: React.FC = () => {
           >
             Pricing
           </button>
-          <button 
-            onClick={() => scrollToSection('faq')} 
+          <Link 
+            to="/about"
             className="text-surface-600 hover:text-primary-600 transition-colors"
           >
-            FAQ
-          </button>
+            About
+          </Link>
+          <Link 
+            to="/contact"
+            className="text-surface-600 hover:text-primary-600 transition-colors"
+          >
+            Contact
+          </Link>
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
@@ -122,12 +134,20 @@ const Header: React.FC = () => {
             >
               Pricing
             </button>
-            <button 
-              onClick={() => scrollToSection('faq')} 
+            <Link 
+              to="/about"
+              onClick={() => setIsMenuOpen(false)}
               className="text-surface-600 py-2 border-b border-surface-100"
             >
-              FAQ
-            </button>
+              About
+            </Link>
+            <Link 
+              to="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-surface-600 py-2 border-b border-surface-100"
+            >
+              Contact
+            </Link>
           </nav>
           <div className="mt-8">
             <Link to="/dashboard" onClick={toggleMenu}>
