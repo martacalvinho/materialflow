@@ -3,11 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Button from '../ui/Button';
 import Logo from '../ui/Logo';
+import { useAuth } from '../contexts/AuthContext';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { user } = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -34,7 +36,7 @@ const Header: React.FC = () => {
 
     const section = document.getElementById(sectionId);
     if (section) {
-      const offset = 80; // Account for header height
+      const offset = 80;
       const elementPosition = section.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -93,9 +95,18 @@ const Header: React.FC = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/dashboard">
-            <Button>Try Interactive Demo</Button>
+          <Link to="/demo">
+            <Button variant="outline">Try Interactive Demo</Button>
           </Link>
+          {user ? (
+            <Link to="/dashboard">
+              <Button>Go to Dashboard</Button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <Button>Sign In</Button>
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -149,12 +160,25 @@ const Header: React.FC = () => {
               Contact
             </Link>
           </nav>
-          <div className="mt-8">
-            <Link to="/dashboard" onClick={toggleMenu}>
-              <Button className="w-full justify-center">
-                Demo
+          <div className="mt-8 space-y-4">
+            <Link to="/demo" onClick={() => setIsMenuOpen(false)}>
+              <Button variant="outline" className="w-full justify-center">
+                Try Interactive Demo
               </Button>
             </Link>
+            {user ? (
+              <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
+                <Button className="w-full justify-center">
+                  Go to Dashboard
+                </Button>
+              </Link>
+            ) : (
+              <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                <Button className="w-full justify-center">
+                  Sign In
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
