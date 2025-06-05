@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Building2, Globe, Sparkles, Target, ArrowRight, Users, Lightbulb, Rocket } from 'lucide-react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import Button from '../ui/Button';
+import Button from '../components/ui/Button';
 
 const AboutPage: React.FC = () => {
   return (
