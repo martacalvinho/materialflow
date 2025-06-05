@@ -30,7 +30,7 @@ const RegisterPage: React.FC = () => {
 
     try {
       await signUp(formData.email, formData.password, {
-        name: formData.name
+        studio_name: formData.name // Changed from 'name' to 'studio_name' to match expected metadata
       });
       
       // Redirect to login with success message
@@ -171,4 +171,4 @@ const RegisterPage: React.FC = () => {
   );
 };
 
-export default RegisterPage
+export default RegisterPage;
