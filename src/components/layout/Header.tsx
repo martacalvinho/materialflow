@@ -54,7 +54,9 @@ const Header: React.FC = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-          <Button>Try Interactive Demo</Button>
+          <Link to="/dashboard">
+            <Button>Try Interactive Demo</Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -105,9 +107,11 @@ const Header: React.FC = () => {
             </Link>
           </nav>
           <div className="mt-8">
-            <Button className="w-full justify-center" onClick={toggleMenu}>
-              Try Interactive Demo
-            </Button>
+            <Link to="/dashboard" onClick={toggleMenu}>
+              <Button className="w-full justify-center">
+                Try Interactive Demo
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Button from '../ui/Button';
 import DashboardPreview from './DashboardPreview';
 
@@ -36,13 +37,15 @@ const HeroSection: React.FC = () => {
               </li>
             </ul>
             <div className="mt-8 md:mt-10 flex justify-center lg:justify-start">
-              <Button 
-                size="lg" 
-                className="group flex items-center gap-2"
-              >
-                <span>Try Interactive Demo</span>
-                <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
-              </Button>
+              <Link to="/dashboard">
+                <Button 
+                  size="lg" 
+                  className="group flex items-center gap-2"
+                >
+                  <span>Try Interactive Demo</span>
+                  <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
             </div>
           </motion.div>
           
