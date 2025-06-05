@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Building2, User } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Logo from '../components/ui/Logo';
+import { useAuth } from '../contexts/AuthContext';
 
 const RegisterPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const RegisterPage: React.FC = () => {
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { signUp } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -28,11 +30,14 @@ const RegisterPage: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // TODO: Implement actual registration logic
-      console.log('Register with:', formData);
-      navigate('/dashboard');
-    } catch (err) {
-      setError('Failed to create account');
+      await signUp(formData.email, formData.password, {
+        full_name: formData.fullName,
+        studio_name: formData.studioName,
+        role: 'studio_owner'
+      });
+      navigate('/login?registered=true');
+    } catch (err: any) {
+      setError(err.message || 'Failed to create account');
     } finally {
       setIsLoading(false);
     }
@@ -196,5 +201,3 @@ const RegisterPage: React.FC = () => {
     </div>
   );
 };
-
-export default RegisterPage;
