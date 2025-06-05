@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Globe, Users, Sparkles } from 'lucide-react';
+import { Building2, Globe, Sparkles, Target } from 'lucide-react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 
@@ -26,7 +26,7 @@ const AboutPage: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg text-surface-600 max-w-3xl mx-auto"
             >
-              Treqy was founded by an architect with over a decade of experience in architectural practice, working on diverse projects in leading global cities including London, New York, Chicago, and Tokyo.
+              Born from real-world architectural experience, Treqy transforms how design studios manage and leverage their material knowledge. Our founder's decade of experience in leading global firms showed us exactly what architects need.
             </motion.p>
           </div>
         </section>
@@ -39,7 +39,7 @@ const AboutPage: React.FC = () => {
                 {
                   icon: Building2,
                   title: "10+ Years",
-                  description: "Of architectural practice experience"
+                  description: "Of architectural expertise"
                 },
                 {
                   icon: Globe,
@@ -47,14 +47,14 @@ const AboutPage: React.FC = () => {
                   description: "London, New York, Chicago, Tokyo"
                 },
                 {
-                  icon: Users,
-                  title: "500+ Projects",
-                  description: "Analyzed and organized"
+                  icon: Target,
+                  title: "1 Mission",
+                  description: "Make material data work for you"
                 },
                 {
                   icon: Sparkles,
-                  title: "15,000+ Materials",
-                  description: "Cataloged and tracked"
+                  title: "Infinite Potential",
+                  description: "For your material library"
                 }
               ].map((stat, index) => (
                 <motion.div
@@ -88,9 +88,9 @@ const AboutPage: React.FC = () => {
               viewport={{ once: true }}
               className="text-center"
             >
-              <h2 className="text-3xl font-bold text-surface-900 mb-6">The "Aha!" Moment</h2>
+              <h2 className="text-3xl font-bold text-surface-900 mb-6">The Spark</h2>
               <p className="text-lg text-surface-600">
-                We saw firsthand how valuable data within past projects was often lost or difficult to access, leading to inefficiencies, missed opportunities for optimization, and a reactive approach to material selection. This sparked the vision for Treqy – a way to transform this dormant information into a powerful, proactive tool for smarter design.
+                Every architecture studio sits on a goldmine of material knowledge – locked away in past project specs. We watched talented architects spend countless hours searching through old PDFs, recreating material schedules, and missing opportunities to leverage their studio's collective experience. That's when we knew: there had to be a better way.
               </p>
             </motion.div>
 
@@ -103,7 +103,7 @@ const AboutPage: React.FC = () => {
             >
               <h2 className="text-3xl font-bold text-surface-900 mb-6">Our Mission</h2>
               <p className="text-lg text-surface-600">
-                Our mission at Treqy is simple: to empower architects and design studios by making their material libraries and project histories intelligent. We provide an intuitive platform that automatically analyzes your specs, uncovers actionable insights, and helps you make data-driven decisions, faster and more effectively. We believe that by organizing this 'material universe,' studios can enhance creativity, improve efficiency, and deliver even better design outcomes.
+                We're transforming how architects interact with their material knowledge. Imagine instantly knowing every project where you've used a specific material, understanding usage patterns across different building types, and getting alerts about discontinued products before they affect your projects. That's the power of Treqy – turning your past decisions into future insights.
               </p>
             </motion.div>
 
@@ -114,9 +114,9 @@ const AboutPage: React.FC = () => {
               viewport={{ once: true }}
               className="text-center"
             >
-              <h2 className="text-3xl font-bold text-surface-900 mb-6">Looking Forward</h2>
+              <h2 className="text-3xl font-bold text-surface-900 mb-6">The Future</h2>
               <p className="text-lg text-surface-600">
-                Built on a foundation of real-world architectural experience, Treqy is dedicated to evolving alongside the needs of the modern practice. We're committed to helping you turn your material knowledge into a strategic asset.
+                We're just getting started. Our vision goes beyond just organizing materials – we're building a platform that learns from your studio's unique material preferences, helps you make more sustainable choices, and transforms your specification process from a time-consuming task into a strategic advantage. Join us in shaping the future of material intelligence in architecture.
               </p>
             </motion.div>
           </div>
