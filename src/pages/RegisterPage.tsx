@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, Building2, User } from 'lucide-react';
+import { Mail, User } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Logo from '../components/ui/Logo';
 import { useAuth } from '../contexts/AuthContext';
@@ -8,10 +8,9 @@ import { useAuth } from '../contexts/AuthContext';
 const RegisterPage: React.FC = () => {
   const [formData, setFormData] = useState({
     email: '',
+    name: '',
     password: '',
-    confirmPassword: '',
-    studioName: '',
-    fullName: ''
+    confirmPassword: ''
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -31,9 +30,7 @@ const RegisterPage: React.FC = () => {
 
     try {
       await signUp(formData.email, formData.password, {
-        full_name: formData.fullName,
-        studio_name: formData.studioName,
-        role: 'user'
+        name: formData.name
       });
       
       // Redirect to login with success message
@@ -84,48 +81,6 @@ const RegisterPage: React.FC = () => {
             )}
 
             <div>
-              <label htmlFor="studioName" className="block text-sm font-medium text-surface-700">
-                Studio Name
-              </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Building2 className="h-5 w-5 text-surface-400" aria-hidden="true" />
-                </div>
-                <input
-                  id="studioName"
-                  name="studioName"
-                  type="text"
-                  required
-                  value={formData.studioName}
-                  onChange={handleChange}
-                  className="block w-full pl-10 sm:text-sm border-surface-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-                  placeholder="Your Studio Name"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="fullName" className="block text-sm font-medium text-surface-700">
-                Full Name
-              </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-surface-400" aria-hidden="true" />
-                </div>
-                <input
-                  id="fullName"
-                  name="fullName"
-                  type="text"
-                  required
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  className="block w-full pl-10 sm:text-sm border-surface-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-                  placeholder="Your Full Name"
-                />
-              </div>
-            </div>
-
-            <div>
               <label htmlFor="email" className="block text-sm font-medium text-surface-700">
                 Email address
               </label>
@@ -148,45 +103,56 @@ const RegisterPage: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-surface-700">
-                Password
+              <label htmlFor="name" className="block text-sm font-medium text-surface-700">
+                Full Name
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-surface-400" aria-hidden="true" />
+                  <User className="h-5 w-5 text-surface-400" aria-hidden="true" />
                 </div>
                 <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="new-password"
+                  id="name"
+                  name="name"
+                  type="text"
                   required
-                  value={formData.password}
+                  value={formData.name}
                   onChange={handleChange}
                   className="block w-full pl-10 sm:text-sm border-surface-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+                  placeholder="Your name"
                 />
               </div>
+            </div>
+
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-surface-700">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="new-password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+                className="block w-full px-3 py-2 sm:text-sm border-surface-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              />
             </div>
 
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-surface-700">
                 Confirm Password
               </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-surface-400" aria-hidden="true" />
-                </div>
-                <input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  className="block w-full pl-10 sm:text-sm border-surface-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-                />
-              </div>
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                autoComplete="new-password"
+                required
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="block w-full px-3 py-2 sm:text-sm border-surface-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              />
             </div>
 
             <div>
@@ -204,5 +170,3 @@ const RegisterPage: React.FC = () => {
     </div>
   );
 };
-
-export default RegisterPage;
