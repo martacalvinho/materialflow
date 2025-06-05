@@ -30,12 +30,30 @@ export function useSupabase() {
   };
 
   const signUp = async (email: string, password: string, metadata?: any) => {
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { data: metadata }
-    });
-    if (error) throw error;
+    try {
+      // Add a simpler approach by removing email redirect
+      // and explicitly setting email confirmation to false
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { 
+          data: metadata,
+          // Do not require email confirmation
+          emailRedirectTo: undefined
+        }
+      });
+      
+      if (error) {
+        console.error('Supabase signup error:', error);
+        throw error;
+      }
+      
+      console.log('Signup successful:', data);
+      return data;
+    } catch (err) {
+      console.error('Error during signup process:', err);
+      throw err;
+    }
   };
 
   const signOut = async () => {

@@ -29,11 +29,13 @@ const RegisterPage: React.FC = () => {
     setIsLoading(true);
 
     try {
+      // Simplified user metadata to match users_new table
       await signUp(formData.email, formData.password, {
-        studio_name: formData.name,
-        role: 'user' // Add the required role field
+        name: formData.name
+        // No need to pass role as it's handled by the database trigger
       });
       
+      console.log('Registration successful');
       // Redirect to login with success message
       navigate('/login?registered=true');
     } catch (err: any) {
