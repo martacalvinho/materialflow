@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Upload } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import Button from '../ui/Button';
 import DashboardPreview from './DashboardPreview';
 
@@ -16,26 +16,32 @@ const HeroSection: React.FC = () => {
             className="flex flex-col"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-surface-900 leading-tight">
-              Transform your material library into actionable insights.
+              Analyze Project Specs. Unlock Material Insights. Design Smarter.
             </h1>
             <p className="mt-6 text-lg md:text-xl text-surface-600 max-w-xl">
-              Upload your project specs and instantly discover patterns in your material choices. Make smarter decisions for future designs.
+              Upload your project specs to analyze your most-used materials, identify client-specific preferences, and track supplier performance. Make data-driven design decisions, effortlessly.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <ul className="mt-8 space-y-3">
+              <li className="flex items-center gap-2 text-surface-700">
+                <span className="text-primary-600">✓</span>
+                Instantly see top materials & suppliers
+              </li>
+              <li className="flex items-center gap-2 text-surface-700">
+                <span className="text-primary-600">✓</span>
+                Understand client & project type patterns
+              </li>
+              <li className="flex items-center gap-2 text-surface-700">
+                <span className="text-primary-600">✓</span>
+                Make informed choices, faster
+              </li>
+            </ul>
+            <div className="mt-10">
               <Button 
                 size="lg" 
                 className="group flex items-center gap-2"
               >
-                <span>See your insights</span>
+                <span>Try Interactive Demo</span>
                 <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button 
-                variant="outline"
-                size="lg"
-                className="flex items-center gap-2"
-              >
-                <Upload size={18} />
-                <span>Live Demo</span>
               </Button>
             </div>
           </motion.div>
