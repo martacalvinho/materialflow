@@ -166,7 +166,7 @@ const AboutPage: React.FC = () => {
                   ))}
                 </div>
                 <p className="text-lg text-surface-600 leading-relaxed">
-                  Our mission is clear: to <span className="font-medium">give you back control</span> and <span className="font-medium">harness the intelligence</span> locked within your material libraries and project histories. Imagine your entire 'material universe,' perfectly organized, working for you.
+                  Our mission is clear: to <span className="font-medium">give you back control</span> and <span className="font-medium">harness the intelligence</span> locked within your material libraries and project histories. Imagine your entire 'material universe,\' perfectly organized, working for you.
                 </p>
               </div>
             </motion.div>
