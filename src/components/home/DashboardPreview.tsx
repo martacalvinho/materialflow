@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, ArrowRight, Sparkles, Package, ChevronRight } from 'lucide-react';
+import { FileText, ArrowRight, Sparkles, Package, ChevronRight, AlertTriangle, TrendingUp, DollarSign } from 'lucide-react';
 
 const DashboardPreview: React.FC = () => {
-  const [activeCard, setActiveCard] = useState(0);
+  const [activeCard, setActiveCard] = useState(2); // Start with insights card
 
   const cards = [
     {
@@ -16,7 +16,7 @@ const DashboardPreview: React.FC = () => {
             </div>
             <div>
               <h3 className="font-medium">Villa_Renovation_Specs.pdf</h3>
-              <p className="text-sm text-surface-600">Uploaded 2 minutes ago</p>
+              <p className="text-sm text-surface-600">Processing complete</p>
             </div>
           </div>
           <div className="space-y-3">
@@ -38,16 +38,6 @@ const DashboardPreview: React.FC = () => {
               <div className="space-y-2">
                 <div className="h-2 bg-surface-200 rounded-full w-full" />
                 <div className="h-2 bg-surface-200 rounded-full w-2/3" />
-              </div>
-            </div>
-            <div className="p-4 bg-surface-50 rounded-lg">
-              <div className="flex justify-between items-center mb-2">
-                <span className="font-medium">Master Bath</span>
-                <span className="text-sm text-surface-600">6 materials</span>
-              </div>
-              <div className="space-y-2">
-                <div className="h-2 bg-surface-200 rounded-full w-1/2" />
-                <div className="h-2 bg-surface-200 rounded-full w-1/3" />
               </div>
             </div>
           </div>
@@ -120,27 +110,56 @@ const DashboardPreview: React.FC = () => {
       title: 'Get actionable insights',
       content: (
         <div className="bg-white rounded-xl border border-surface-200 shadow-sm p-6">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 bg-surface-50 rounded-lg">
-              <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="h-5 w-5 text-primary-600" />
-                <h4 className="font-medium">Trending Up</h4>
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 bg-surface-50 rounded-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <TrendingUp className="h-5 w-5 text-green-600" />
+                  <h4 className="font-medium text-green-700">Trending Materials</h4>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-sm">
+                    <span>Sustainable Wood</span>
+                    <span className="text-green-600">+28%</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span>Local Suppliers</span>
+                    <span className="text-green-600">+15%</span>
+                  </div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <div className="text-sm">Sustainable materials</div>
-                <div className="text-sm">Local suppliers</div>
-                <div className="text-sm">Natural finishes</div>
+              <div className="p-4 bg-accent-50 rounded-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <AlertTriangle className="h-5 w-5 text-accent-600" />
+                  <h4 className="font-medium text-accent-700">Critical Updates</h4>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-sm text-accent-700">3 materials discontinued</div>
+                  <div className="text-sm text-accent-700">2 price increases</div>
+                </div>
               </div>
             </div>
-            <div className="p-4 bg-surface-50 rounded-lg">
-              <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="h-5 w-5 text-accent-600" />
-                <h4 className="font-medium">Watch List</h4>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 bg-primary-50 rounded-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <DollarSign className="h-5 w-5 text-primary-600" />
+                  <h4 className="font-medium text-primary-700">Cost Analysis</h4>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-sm text-primary-700">15% potential savings</div>
+                  <div className="text-sm text-primary-700">3 alternative options</div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <div className="text-sm">3 discontinued items</div>
-                <div className="text-sm">2 price increases</div>
-                <div className="text-sm">1 new alternative</div>
+              <div className="p-4 bg-terracotta-50 rounded-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <Sparkles className="h-5 w-5 text-terracotta-600" />
+                  <h4 className="font-medium text-terracotta-700">Recommendations</h4>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-sm text-terracotta-700">5 new eco-friendly options</div>
+                  <div className="text-sm text-terracotta-700">Local supplier match</div>
+                </div>
               </div>
             </div>
           </div>
