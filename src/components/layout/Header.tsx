@@ -60,7 +60,6 @@ const Header: React.FC = () => {
           <span className="font-semibold text-xl text-surface-900">Treqy</span>
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           <button 
             onClick={() => scrollToSection('features')} 
@@ -100,16 +99,15 @@ const Header: React.FC = () => {
           </Link>
           {user ? (
             <Link to="/dashboard">
-              <Button>Go to Dashboard</Button>
+              <Button>Dashboard</Button>
             </Link>
           ) : (
             <Link to="/login">
-              <Button>Sign In</Button>
+              <Button>Log In</Button>
             </Link>
           )}
         </div>
 
-        {/* Mobile Menu Button */}
         <button 
           className="md:hidden z-20" 
           onClick={toggleMenu}
@@ -119,7 +117,6 @@ const Header: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <div 
         className={`fixed inset-0 bg-white z-10 transform transition-transform duration-300 ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
@@ -169,13 +166,13 @@ const Header: React.FC = () => {
             {user ? (
               <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
                 <Button className="w-full justify-center">
-                  Go to Dashboard
+                  Dashboard
                 </Button>
               </Link>
             ) : (
               <Link to="/login" onClick={() => setIsMenuOpen(false)}>
                 <Button className="w-full justify-center">
-                  Sign In
+                  Log In
                 </Button>
               </Link>
             )}
